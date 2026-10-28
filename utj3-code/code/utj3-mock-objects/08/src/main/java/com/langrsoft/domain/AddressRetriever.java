@@ -35,7 +35,7 @@ public class AddressRetriever {
         if (!country.equals("us")) {
             auditor.audit("request for country code: %s".formatted(country));
             throw new UnsupportedOperationException(
-               "intl addresses unsupported");
+               "국제 주소 미지원");
         }
 
         return address;
