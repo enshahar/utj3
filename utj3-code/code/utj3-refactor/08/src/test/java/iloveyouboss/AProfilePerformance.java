@@ -36,8 +36,8 @@ class AProfilePerformance {
             if (profile.matches(criteria))
                 matchCount.incrementAndGet();
         });
-        System.out.println("elapsed: " + elapsedMs);
-        System.out.println("matches: " + matchCount.get());
+        System.out.println("경과 시간: " + elapsedMs);
+        System.out.println("일치 항목: " + matchCount.get());
     }
 
     long time(int times, Consumer<Integer> func) {
