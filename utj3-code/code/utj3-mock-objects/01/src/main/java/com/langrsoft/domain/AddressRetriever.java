@@ -31,7 +31,7 @@ public class AddressRetriever {
         var country = address.country_code();
         if (!country.equals("us"))
             throw new UnsupportedOperationException(
-               "intl addresses unsupported");
+               "국제 주소 미지원");
 
         return address;
     }

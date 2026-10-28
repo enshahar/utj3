@@ -37,7 +37,7 @@ class AProfilePerformance {
         System.out.println("일치 항목: " + matchCount.get());
     }
 
-    long time(int times, Consumer<Integer> func) {
+    long time(int times, Consumer<Integer> func) {0
         var start = System.nanoTime();
         range(0, times).forEach(i -> func.accept(i + 1));
         return (System.nanoTime() - start) / 1_000_000;
