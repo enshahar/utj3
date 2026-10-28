@@ -35,7 +35,7 @@ public record Booking(
 
       @Override
       public String errorMessage() {
-         return "Name is empty";
+         return "이름이 비어 있다";
       }
    }
 
@@ -47,7 +47,7 @@ public record Booking(
 
       @Override
       public String errorMessage() {
-         return "Minor cannot fly unaccompanied";
+         return "미성년자는 보호자 동반 없이 비행할 수 없다";
       }
    }
 
@@ -71,7 +71,7 @@ public record Booking(
 
       @Override
       public String errorMessage() {
-         return "Itinerary needs 2+ airport codes";
+         return "여정에 2개 이상의 공항 코드가 필요하다";
       }
    }
 
@@ -84,7 +84,7 @@ public record Booking(
 
       @Override
       public String errorMessage() {
-         return "Itinerary contains invalid airport code";
+         return "여정에 유효하지 않은 공항 코드가 포함됐다";
       }
    }
 
