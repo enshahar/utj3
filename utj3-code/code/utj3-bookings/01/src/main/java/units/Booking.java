@@ -24,16 +24,16 @@ public record Booking(
    public List<String> validate() {
       var errorMessages = new ArrayList<String>();
       if (name == null || name.trim().isEmpty())
-         errorMessages.add("Name is empty");
+         errorMessages.add("이름이 비어 있다");
       if (age < 18)
-         errorMessages.add("Minor cannot fly unaccompanied");
+         errorMessages.add("미성년자는 보호자 동반 없이 비행할 수 없다");
       if (!departureDate.isAfter(LocalDateTime.now()))
-         errorMessages.add("Too late!");
+         errorMessages.add("너무 늦었다!");
       if (itinerary.size() < 2)
-         errorMessages.add("Itinerary needs 2+ airport codes");
+         errorMessages.add("여정에 2개 이상의 공항 코드가 필요하다");
       if (!itinerary.stream().allMatch(
               airportCode -> AIRPORT_CODES.contains(airportCode)))
-         errorMessages.add("Itinerary contains invalid airport code");
+         errorMessages.add("여정에 유효하지 않은 공항 코드가 포함됐다");
       return errorMessages;
    }
 }
