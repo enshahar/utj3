@@ -78,7 +78,7 @@ class AnAddressRetriever {
         assertThrows(UnsupportedOperationException.class,
            () -> retriever.retrieve(1.0, -1.0));
 
-        verify(auditor).audit("request for country code: not us");
+        verify(auditor).audit("국가 코드 요청: not us");
     }
 
     @Test

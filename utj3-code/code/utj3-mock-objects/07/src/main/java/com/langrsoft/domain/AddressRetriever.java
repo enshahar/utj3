@@ -17,9 +17,9 @@ import com.langrsoft.util.HttpImpl;
 public class AddressRetriever {
     private static final String SERVER =
        "https://nominatim.openstreetmap.org";
-    private Http http = new HttpImpl(); // this cannot be final
+    private Http http = new HttpImpl(); // 이 변수는 final 로 선언할 수 없음
 
-    // look ma, no constructor!
+    // 생성자 없이도 가능함을 볼 수 있다.
 
     public Address retrieve(double latitude, double longitude) {
         // ...

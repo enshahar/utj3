@@ -18,7 +18,7 @@ public class AddressRetriever {
     private Auditor auditor = new ApplicationAuditor();
     private static final String SERVER =
        "https://nominatim.openstreetmap.org";
-    private Http http = new HttpImpl(); // this cannot be final
+    private Http http = new HttpImpl(); // 이 변수는 final 로 선언할 수 없음
 
     public Address retrieve(double latitude, double longitude) {
     // ...
@@ -34,7 +34,7 @@ public class AddressRetriever {
         var address = response.address();
         var country = address.country_code();
         if (!country.equals("us")) {
-            auditor.audit("request for country code: %s".formatted(country));
+            auditor.audit("국가 코드 요청: %s".formatted(country));
             throw new UnsupportedOperationException("국제 주소 미지원");
         }
 
