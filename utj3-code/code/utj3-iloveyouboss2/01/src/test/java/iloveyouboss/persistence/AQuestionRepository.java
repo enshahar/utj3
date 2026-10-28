@@ -37,11 +37,11 @@ class AQuestionRepository {
 
    @Test
    void findsPersistedQuestionById() {
-      var id = repository.addBooleanQuestion("question text");
+      var id = repository.addBooleanQuestion("질문 텍스트");
       
       var question = repository.find(id);
       
-      assertEquals("question text", question.getText());
+      assertEquals("질문 텍스트", question.getText());
    }
    
    @Test
