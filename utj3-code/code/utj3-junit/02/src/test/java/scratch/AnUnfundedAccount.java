@@ -20,6 +20,6 @@ class AnUnfundedAccount {
 
    @Test
    void doesNotAccrueInterest() {
-      // ... uh oh we need to focus on this test
+      // ... 어, 이 테스트에 집중해야겠네요
    }
 }
