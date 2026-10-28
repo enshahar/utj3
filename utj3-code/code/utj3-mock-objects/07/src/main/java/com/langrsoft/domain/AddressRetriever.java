@@ -1,0 +1,51 @@
+/***
+ * Excerpted from "Pragmatic Unit Testing in Java with JUnit, Third Edition",
+ * published by The Pragmatic Bookshelf.
+ * Copyrights apply to this code. It may not be used to create training material,
+ * courses, books, articles, and the like. Contact us if you are in doubt.
+ * We make no guarantees that this code is fit for any purpose.
+ * Visit https://pragprog.com/titles/utj3 for more book information.
+***/
+package com.langrsoft.domain;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.langrsoft.util.Http;
+import com.langrsoft.util.HttpImpl;
+
+public class AddressRetriever {
+    private static final String SERVER =
+       "https://nominatim.openstreetmap.org";
+    private Http http = new HttpImpl(); // this cannot be final
+
+    // look ma, no constructor!
+
+    public Address retrieve(double latitude, double longitude) {
+        // ...
+        var locationParams = "lat=%.6f&lon=%.6f".formatted(latitude, longitude);
+        var url = "%s/reverse?%s&format=json".formatted(SERVER, locationParams);
+
+        var jsonResponse = http.get(url);
+
+        var response = parseResponse(jsonResponse);
+
+        var address = response.address();
+        var country = address.country_code();
+        if (!country.equals("us"))
+            throw new UnsupportedOperationException("intl addresses unsupported");
+
+        return address;
+    }
+    // ...
+
+    private Response parseResponse(String jsonResponse) {
+        var mapper = new ObjectMapper()
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+       try {
+          return mapper.readValue(jsonResponse, Response.class);
+       } catch (JsonProcessingException e) {
+          throw new RuntimeException(e);
+       }
+    }
+}
