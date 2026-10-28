@@ -22,7 +22,7 @@ public class Account {
 
    void withdraw(int dollars) {
       if (balance < dollars)
-         throw new InsufficientFundsException("balance only " + balance);
+         throw new InsufficientFundsException("잔액이 " + balance + " 원뿐이다");
       balance -= dollars;
    }
 

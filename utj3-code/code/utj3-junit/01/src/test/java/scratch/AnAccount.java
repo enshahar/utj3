@@ -21,14 +21,14 @@ class AnAccount {
 
    @BeforeEach
    void createAccount() {
-      account = new Account("an account name");
+      account = new Account("계좌 이름");
    }
    // ...
 
    @Nested class SomeDifferentScope {
    @Test
    void hasPositiveBalanceAfterInitialDeposit() {
-      var account = new Account("an account name");
+      var account = new Account("계좌 이름");
 
       account.deposit(50);
 
@@ -45,7 +45,7 @@ class AnAccount {
 
    @Test
    void hasPositiveBalanceAfterInitialDeposit() {
-      var account = new Account("an account name");
+      var account = new Account("계좌 이름");
 
       account.deposit(50);
 
@@ -54,7 +54,7 @@ class AnAccount {
 
    @Test
    void depositIncreasesBalance() {
-      var account = new Account("an account name");
+      var account = new Account("계좌 이름");
       var initialBalance = account.getBalance();
 
       account.deposit(100);
@@ -87,7 +87,7 @@ class AnAccount {
 
          var balance = account.getBalance();
 
-         assertEquals(101, balance, "account balance must be total of deposits");
+         assertEquals(101, balance, "계좌 잔액은 입금액의 합계여야 합니다");
       }
    }
 
@@ -114,7 +114,7 @@ class AnAccount {
             account.withdraw(100);
             fail();
          } catch (InsufficientFundsException expected) {
-            assertEquals("balance only 0", expected.getMessage());
+            assertEquals("잔액이 0이다", expected.getMessage());
          }
       }
    }
@@ -125,7 +125,7 @@ class AnAccount {
       void throwsWhenWithdrawingTooMuch() {
          var thrown = assertThrows(InsufficientFundsException.class,
             () -> account.withdraw(100));
-         assertEquals("balance only 0", thrown.getMessage());
+         assertEquals("잔액이 0이다", thrown.getMessage());
       }
    }
 

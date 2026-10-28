@@ -60,7 +60,7 @@ class AnInMemoryDatabase {
       @Test
       void returnsCustomerCorrespondingToId() {
          var customer = new Customer("42", "Mr Creosote");
-         assertNotNull(customer); // bogus! this can't fail
+         assertNotNull(customer); // 허튼소리! 이건 실패할 수 없어
          db.add(customer);
 
          var retrieved = db.get("42");
